@@ -5,8 +5,8 @@ seed_skill: ""       # 留空 -> 使用內建的通用種子技能
 model:
   base_url: "http://localhost:8080/v1"   # 本機 vLLM(docker-proxy 把 host 8080 映射到容器內 8000)
   api_key_env: "OPENAI_API_KEY"          # 多數本機服務會忽略此值
-  target_model: "qwen3.6-27b"            # 你的 vLLM 服務回報的 served-model-name
-  optimizer_model: "qwen3.6-27b"
+  target_model: "qwen3.6"                # 你的 vLLM 服務回報的 served-model-name
+  optimizer_model: "qwen3.6"
   temperature: 0.0          # agent 以確定性方式作答
   optimizer_temperature: 0.7
   enable_thinking: false    # 關閉 Qwen3 思考以大幅加速(QA 抽取不需長 CoT)
@@ -16,7 +16,7 @@ model:
   max_retries: 4
 
 train:
-  num_epochs: 2
+  num_epochs: 5
   batch_size: 8
   val_size: 24        # 每步用這麼多 val 筆數把關(0 = 全部)
   workers: 16         # 平行 rollout worker 數
